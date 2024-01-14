@@ -13,9 +13,9 @@
 
 > Setup initial database and create required tables and data for default applications according to the sequence
 
-	cd db
+	Create a new db name db_hackfest (or your choice)
 
-    Executre 01_db_hackfest.sql
+    Executee 01_db_hackfest.sql in the database using phpmyadmin or any other client.
 
 
 > Create a file as .env in the root folder for the environment variables based on the env.example
