@@ -59,6 +59,5 @@ def test_db():
     res = user_service.get_all_users()
     return res
 
-
 if __name__ == '__main__':
     app.run(debug=True)
