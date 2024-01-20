@@ -2,6 +2,7 @@ from flask import Blueprint,request,render_template,redirect
 
 from core.service.user_service import UserService
 
+#TODO: Remove this
 import mysql.connector
 
 users = Blueprint('users', __name__)
