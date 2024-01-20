@@ -16,3 +16,6 @@ class UserService():
 	def check_login(self,email,password):
 		return self.dao.check_login(email, password)
 
+	def register_user(self,data):
+		return self.dao.register_user(data)
+

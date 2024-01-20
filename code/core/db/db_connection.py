@@ -20,7 +20,8 @@ class DBConnection():
 		database = os.environ["DB_NAME"]
 
 		try:
-			conn = mysql.connector.connect(user=user, password=password,host=host,database=database) 
+			# Autocommit is True as we are letting the library do the saving process for us
+			conn = mysql.connector.connect(user=user, password=password,host=host,database=database,autocommit=True) 
 			cursor = conn.cursor()
 		except mysql.connector.Error as err:
 			if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:

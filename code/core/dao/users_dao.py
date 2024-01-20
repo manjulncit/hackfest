@@ -8,7 +8,6 @@ class UserDAO():
 	def get_all_users(self):
 		conn,cursor = self.db_conn.init_conn()
 
-		resp = {}
 		res = None
 		status = False
 		message = ""
@@ -21,7 +20,6 @@ class UserDAO():
 			status = True
 			message = "Succesfully Fetched Queries"
 		except Exception as e:
-			status = False
 			message = str(e)
 		return {"response": res,"status":status,"message":message} 
 
@@ -36,25 +34,32 @@ class UserDAO():
 
 		return res
 
-	def create_user(self,user):
+	def register_user(self,user):
 		conn,cursor = self.db_conn.init_conn()
+		res = None
+		status = False
+		message = ""
 
-		query = f'''INSERT INTO `users`
-					(`first_name`,
-					`last_name`,
-					`email`,
-					`password`,
-					`status`)
-					VALUES
-					('{user.get("first_name")}',
-					'{user.get("last_name")}',
-					'{user.get("email")}',
-					'{user.get("password")}',
-					{user.get("status")})'''
+		try:
+			query = f'''INSERT INTO `users`
+						(`first_name`,
+						`last_name`,
+						`email`,
+						`password`,
+						`status`)
+						VALUES
+						('{user.get("first_name")}',
+						'{user.get("last_name")}',
+						'{user.get("email")}',
+						'{user.get("password")}',
+						1)'''
+			res = cursor.execute(query)
+			status = True
+			message = "Succesfully Created User"
+		except Exception as e:
+			message = str(e)		
 
-		res = cursor.execute(query)
-
-		return res
+		return {"response": res,"status":status,"message":message} 
 
 	def update_user(self,id,user):
 		pass

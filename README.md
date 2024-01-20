@@ -5,6 +5,7 @@
 > Create and activate new virtual environment
 
 	mkvirtualenv hackfestenv
+    pip install -r requirements.txt
 
 
 > Navigate to hackfest inside of the main directory.

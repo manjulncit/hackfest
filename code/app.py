@@ -36,6 +36,23 @@ def do_login():
     else:
         return redirect('/login')
 
+@app.route('/doRegister',methods=['POST'])
+def do_register():
+    user_service = UserService()
+
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    email = request.form['email']
+    password = request.form['password']
+
+    data = {"first_name": first_name,"last_name":last_name,"email":email,"password":password}
+    res = user_service.register_user(data)
+    print(res)
+    if res.get("status"):
+        return redirect('/login')
+    else:
+        return redirect('/register')
+
 @app.route('/testdb')
 def test_db():
     user_service = UserService()
