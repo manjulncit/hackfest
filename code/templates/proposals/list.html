@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title_content %}    
+MyProject | List Proposals
+{% endblock %}
+
+{% block body_content %}
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1>Proposals <span class="badge bg-secondary text-white">Listing</span></h1>
+</div>
+<!-- Content Row -->
+<div class="row">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Identifier</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
+            <th scope="col">Member Count</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for proposal in proposals %}
+        <tr>
+            <th scope="row">{{proposal.id}}</th>
+            <td>{{proposal.identifier}}</td>
+            <td>{{proposal.title}}</td>
+            <td>{{proposal.category}}</td>
+            <td>{{proposal.team_member_count}}</td>
+            <td>
+                <a href=""><i class="fa fa-eye"></i></a> &nbsp;
+                <a href=""><i class="fa fa-edit"></i></a> &nbsp;
+                <a href=""><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
