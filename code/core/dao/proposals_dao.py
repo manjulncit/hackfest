@@ -16,7 +16,7 @@ class ProposalDAO():
 
 			cursor.execute(query)
 
-			res = cursor.fetchall()
+			res = self.get_column_value_pair(cursor)
 			status = True
 			message = "Succesfully Fetched Queries"
 		except Exception as e:
@@ -42,7 +42,22 @@ class ProposalDAO():
 
 		try:
 			#TODO: Update with the right query
-			query = f''''''
+			query = ''' INSERT INTO `proposals`
+                        (`identifier`,
+                        `title`,
+                        `category`,
+                        `description`,
+                        `team_member_count`,
+                        `status`)
+                        VALUES
+                        (
+                        "33ac0b9f-d092-4603-bf68-9e77bcee0f33",
+                        "First Proposal",
+                        "Technology",
+                        "This is a sample first proposal",
+                        4,
+                        1);
+                        '''
 			res = cursor.execute(query)
 			status = True
 			message = "Succesfully Created Proposal"
@@ -56,3 +71,7 @@ class ProposalDAO():
 
 	def delete_proposal(self,proposal_id):
 		pass
+	def get_column_value_pair(self,cursor):
+		columns = cursor.description
+		result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
+		return result
