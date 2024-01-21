@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title_content %}    
+MyProject | Add Proposals
+{% endblock %}
+
+{% block body_content %}
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1>Proposals <span class="badge bg-secondary text-white">Listing</span></h1>
+
+    <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        class="fas fa-plus fa-sm text-white-50"></i> Add Proposal</a>
+</div>
+<!-- Content Row -->
+<div class="row">
+    <div class="card col-12">
+        <br/>
+    <form action="/create_proposals" method="POST">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Title</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="Title" name="title">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputState">Category</label>
+            <select id="inputState" class="form-control" name="category">
+              <option selected>Choose category</option>
+              <option value="Technology">Technology</option>
+              <option value="Health">Health</option>
+              <option value="Arts">Arts</option>
+              <option value="Sports">Sports</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Description</label>
+          <textarea class="form-control" rows="10" cols="80" id="description_editor" name="description"></textarea>
+        <div class="form-group">
+          <label for="inputAddress2">Total Members</label>
+          <input type="text" class="form-control" id="inputAddress2" name="member_count">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+</div>
+
+{% endblock %}
+{% block js_content %}
+<script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+            .create( document.querySelector( '#description_editor' ) )
+            .then( editor => {
+                editor.height = 600;
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+</script>
+{% endblock %}
