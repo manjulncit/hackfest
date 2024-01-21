@@ -8,6 +8,9 @@ MyProject | List Proposals
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1>Proposals <span class="badge bg-secondary text-white">Listing</span></h1>
+
+    <a href="/create_proposals" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        class="fas fa-plus fa-sm text-white-50"></i> Add Proposal</a>
 </div>
 <!-- Content Row -->
 <div class="row">
@@ -33,8 +36,8 @@ MyProject | List Proposals
             <td>{{proposal.team_member_count}}</td>
             <td>
                 <a href=""><i class="fa fa-eye"></i></a> &nbsp;
-                <a href=""><i class="fa fa-edit"></i></a> &nbsp;
-                <a href=""><i class="fa fa-trash"></i></a>
+                <a href="/proposals_update/{{proposal.id}}"><i class="fa fa-edit"></i></a> &nbsp;
+                <a href="/proposals_delete/{{proposal.id}}" onclick="return confirm('Do you want to delete the proposal?')"><i class="fa fa-trash"></i></a>
             </td>
         </tr>
         {% endfor %}

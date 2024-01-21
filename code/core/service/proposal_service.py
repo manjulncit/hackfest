@@ -1,5 +1,7 @@
 from core.dao.proposals_dao import ProposalDAO
 
+import uuid
+
 class ProposalService():
 
 	def __init__(self):
@@ -12,6 +14,9 @@ class ProposalService():
 		return self.dao.get_proposal_details(proposal_id)
 
 	def create_proposal(self,proposal):
+		# Adding identifier as UUID
+		identifier =  uuid.uuid4()
+		proposal["identifier"] = str(identifier)
 		return self.dao.create_proposal(proposal)
 	
 	def update_proposal(self,proposal_id,proposal):
