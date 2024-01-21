@@ -8,3 +8,8 @@ CREATE TABLE `proposals` (
   `status` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `identifier_UNIQUE` (`identifier` ASC) VISIBLE);
+
+ALTER TABLE `proposals` 
+CHANGE COLUMN `team_member_count` `team_member_count` INT NULL DEFAULT NULL ,
+CHANGE COLUMN `status` `status` INT NULL DEFAULT NULL ;
+
